@@ -8,7 +8,7 @@ import { ThingToDo } from 'src/app/shared/model/things-to-do-model';
 })
 export class ThingsToDoListItemComponent implements OnInit {
 
-  @Input() toDoItem: ThingToDo | undefined
+  @Input() toDoItem: ThingToDo
 
   constructor() { }
 

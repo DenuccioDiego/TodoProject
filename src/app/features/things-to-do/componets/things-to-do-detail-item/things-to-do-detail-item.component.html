@@ -1,1 +1,16 @@
-<p>things-to-do-detail-item works!</p>
+<ng-container [ngSwitch]="loading">
+    <div *ngSwitchCase="'loading'">
+        Inner content 1
+    </div>
+    <div *ngSwitchCase="'loaded'">
+        {{toDoDetail.text}}
+        {{toDoDetail.expirationDate}}
+        {{toDoDetail.state}}
+    </div>
+    <div *ngSwitchCase="'error'">
+        Inner content 3
+    </div>
+    <div *ngSwitchCase="'empity'">
+        Inner content 4
+    </div>
+</ng-container>

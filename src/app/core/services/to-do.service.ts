@@ -7,15 +7,20 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class ToDoService {
 
-  constructor(private Http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getAllToDo(): Observable<ThingToDo[]> {
     const url = environment.baseUrl + '/toDo';
-    return this.Http.get<ThingToDo[]>(url);
+    return this.http.get<ThingToDo[]>(url);
   }
 
-  public getOneCompanyById(toDoId: Number): Observable<ThingToDo> {
+  public getOneToDoById(toDoId: Number): Observable<ThingToDo> {
     const url = environment.baseUrl + '/toDo/' + toDoId;
-    return this.Http.get<ThingToDo>(url);
+    return this.http.get<ThingToDo>(url);
+  }
+
+  public deleteOneToDoById(toDoId: Number): Observable<ThingToDo> {
+    const url = environment.baseUrl + '/toDo/' + toDoId;
+    return this.http.delete<ThingToDo>(url);
   }
 }
