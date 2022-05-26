@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToDoService } from './services/to-do.service';
 
 
 
@@ -8,6 +9,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule
   ],
-  providers: []
+  providers: [ToDoService]
 })
 export class CoreModule { }

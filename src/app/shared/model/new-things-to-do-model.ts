@@ -1,4 +1,4 @@
-export interface ThingToDo {
+export interface NewThingToDo {
     text: string,
     expirationDate: Date,
     state: string
