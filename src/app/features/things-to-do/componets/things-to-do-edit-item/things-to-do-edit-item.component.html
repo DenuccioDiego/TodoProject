@@ -17,6 +17,10 @@
             <div>
                 <label>Text:</label>
                 <input type="text" name="text" #refText="ngModel" [ngModel]="toDoDetail.text" required>
+
+                <small *ngIf="refText.touched && refText.invalid">
+                    Descrizione Obbligatoria minimo 5 caratteri massimo 40 carattari
+                </small>
             </div>
 
             <div>
@@ -34,7 +38,7 @@
             </div>
 
             <div>
-                <input type="submit" value="SAVE">
+                <input type="submit" value="SAVE" [disabled]="refText.invalid">
             </div>
 
         </form>

@@ -2,17 +2,22 @@
 
     <div>
         <label>Text:</label>
-        <input type="text" name="text" #refText="ngModel" [ngModel]="toDoFormDetail?.text" required>
+        <input type="text" name="text" #refText="ngModel" [ngModel]="toDoFormDetail.text" required minlength="5"
+            maxlength="40">
+
+        <small *ngIf="refText.touched && refText.invalid">
+            Descrizione Obbligatoria minimo 5 caratteri massimo 40 carattari
+        </small>
     </div>
 
     <div>
         <label>Due Date:</label>
-        <input type="date" name="dueDate" #refDueDate="ngModel" [ngModel]="toDoFormDetail?.dueDate">
+        <input type="date" name="dueDate" #refDueDate="ngModel" [ngModel]="toDoFormDetail.dueDate">
     </div>
 
     <div>
         <label>State:</label>
-        <select name="state" #refState="ngModel" [ngModel]="toDoFormDetail?.state">
+        <select name="state" #refState="ngModel" [ngModel]="toDoFormDetail.state" required>
             <option value="TODO">TODO</option>
             <option value="IN_PROGRESS">IN_PROGRESS</option>
             <option value="DONE">DONE</option>
@@ -20,7 +25,7 @@
     </div>
 
     <div>
-        <input type="submit" value="SAVE">
+        <input type="submit" value="SAVE" [disabled]="refText.invalid">
     </div>
 
 </form>

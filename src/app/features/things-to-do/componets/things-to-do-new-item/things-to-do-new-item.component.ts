@@ -12,7 +12,13 @@ export class ThingsToDoNewItemComponent implements OnInit {
 
   toDoFormDetail: NewThingToDo
 
-  constructor(private toDoService: ToDoService) { }
+  constructor(private toDoService: ToDoService) {
+    this.toDoFormDetail = {
+      text: "",
+      dueDate: null,
+      state: "TODO"
+    }
+  }
 
   ngOnInit(): void {
   }
