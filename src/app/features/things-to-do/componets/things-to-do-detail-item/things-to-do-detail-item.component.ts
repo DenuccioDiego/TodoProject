@@ -21,15 +21,21 @@ export class ThingsToDoDetailItemComponent implements OnInit {
 
     this.route.params.subscribe({
       next: (p) => this.requestDetailCompany(p['toDoId']),
-      error: (e) => this.loading = "error"
+      error: (e) => this.loadingError(e)
     })
   }
 
   public requestDetailCompany(toDoId: number) {
     this.toDoService.getOneToDoById(toDoId).subscribe({
       next: (v) => this.toDoDetail = v,
-      error: (e) => this.loading = "error",
+      error: (e) => this.loadingError(e),
       complete: () => this.loading = this.toDoDetail != undefined ? "loaded" : "empity"
     })
   }
+
+  public loadingError(e: Error): void {
+    this.loading = "error"
+    console.log(e);
+  }
+
 }

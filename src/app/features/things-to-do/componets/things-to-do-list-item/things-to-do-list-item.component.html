@@ -1,6 +1,6 @@
 <div>
     {{toDoItem.text}}
-    <todo-common-selector (selection)="selectionHandler()" [text]="'SHOW'"></todo-common-selector>
-    <todo-common-selector (selection)="selectionHandler()" [text]="'EDIT'"></todo-common-selector>
-    <todo-common-selector (selection)="selectionHandler()" [text]="'DELETE'"></todo-common-selector>
+    <todo-common-selector (selection)="showHandler()" [text]="'SHOW'"></todo-common-selector>
+    <todo-common-selector (selection)="editHandler()" [text]="'EDIT'"></todo-common-selector>
+    <todo-common-selector (selection)="deleteHandler()" [text]="'DELETE'"></todo-common-selector>
 </div>

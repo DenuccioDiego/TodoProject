@@ -1,10 +1,14 @@
+<div>
+    <a [routerLink]="['/todo/create']" routerLinkActive="active">Create New Task</a>
+</div>
 <ng-container [ngSwitch]="loading">
     <div *ngSwitchCase="'loading'">
         Inner content 1
     </div>
     <div *ngSwitchCase="'loaded'">
         <todo-things-to-do-list-item *ngFor="let toDo of toDoList" [toDoItem]="toDo"
-            (selectionToDo)="selectionHandler($event)">
+            (selectionShowToDo)="showToDoHandler($event)" (selectionEditToDo)="editToDoHandler($event)"
+            (selectionDeleteToDo)="deleteToDoHandler($event)">
 
         </todo-things-to-do-list-item>
     </div>

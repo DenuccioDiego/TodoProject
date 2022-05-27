@@ -8,6 +8,7 @@ import { ThingsToDoEditItemComponent } from './componets/things-to-do-edit-item/
 import { ThingsToDoRoutingModule } from './things-to-do-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ThingsToDoRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class ThingsToDoModule { }

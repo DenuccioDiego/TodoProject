@@ -1,5 +1,5 @@
 export interface NewThingToDo {
     text: string,
-    expirationDate: Date,
+    dueDate: Date,
     state: string
 }

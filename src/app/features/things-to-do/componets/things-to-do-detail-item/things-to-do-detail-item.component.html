@@ -1,10 +1,11 @@
 <ng-container [ngSwitch]="loading">
+    <todo-back-home></todo-back-home>
     <div *ngSwitchCase="'loading'">
         Inner content 1
     </div>
     <div *ngSwitchCase="'loaded'">
         {{toDoDetail.text}}
-        {{toDoDetail.expirationDate}}
+        {{toDoDetail.dueDate}}
         {{toDoDetail.state}}
     </div>
     <div *ngSwitchCase="'error'">

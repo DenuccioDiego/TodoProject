@@ -17,18 +17,35 @@ export class ThingsToDoContainerComponent implements OnInit {
   constructor(private router: Router, private toDoService: ToDoService) {
     this.toDoService.getAllToDo().subscribe({
       next: (v) => this.toDoList = v,
-      error: (e) => this.loading = "error",
-      complete: () => this.loading = this.toDoList.length > 0 ? "loaded" : "empity"
+      error: (e) => this.loadingError(e),
+      complete: () => this.checkList()
     })
   }
 
   ngOnInit(): void { }
 
-  public selectionHandler(toDoItem: ThingToDo): void {
-    const url = `todo/show/${toDoItem.id}`
-    console.log(url);
+  showToDoHandler = (toDoId: ThingToDo) => this.router.navigateByUrl(`todo/show/${toDoId.id}`);
+  editToDoHandler = (toDoId: ThingToDo) => this.router.navigateByUrl(`todo/edit/${toDoId.id}`);
 
-    this.router.navigateByUrl(url)
+  public deleteToDoHandler(toDoId: ThingToDo): void {
+    this.toDoService.deleteOneToDoById(toDoId.id).subscribe({
+      complete: () => this.removeItem(toDoId.id),
+      error: (e) => this.loadingError(e)
+    })
+  }
+
+  public removeItem(toDoId: number): void {
+    this.toDoList = this.toDoList.filter(el => el.id !== toDoId)
+    this.checkList()
+  }
+
+  public checkList(): void {
+    this.loading = this.toDoList.length > 0 ? "loaded" : "empity"
+  }
+
+  public loadingError(e: Error): void {
+    this.loading = "error"
+    console.log(e);
   }
 
 }

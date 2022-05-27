@@ -12,12 +12,23 @@ export class ThingsToDoListItemComponent implements OnInit {
 
   constructor() { }
 
-  @Output() selectionToDo: EventEmitter<ThingToDo> = new EventEmitter<ThingToDo>();
+  @Output() selectionShowToDo: EventEmitter<ThingToDo> = new EventEmitter<ThingToDo>();
+  @Output() selectionEditToDo: EventEmitter<ThingToDo> = new EventEmitter<ThingToDo>();
+  @Output() selectionDeleteToDo: EventEmitter<ThingToDo> = new EventEmitter<ThingToDo>();
+
   ngOnInit(): void {
   }
 
-  public selectionHandler(): void {
-    this.selectionToDo.emit(this.toDoItem)
+  public showHandler(): void {
+    this.selectionShowToDo.emit(this.toDoItem)
+  }
+
+  public editHandler(): void {
+    this.selectionEditToDo.emit(this.toDoItem)
+  }
+
+  public deleteHandler(): void {
+    this.selectionDeleteToDo.emit(this.toDoItem)
   }
 
 }

@@ -1,1 +1,50 @@
-<p>things-to-do-edit-item works!</p>
+<ng-container [ngSwitch]="loading">
+
+    <todo-back-home></todo-back-home>
+
+    <div *ngIf="taskEdit">
+        <span>Task modificata</span>
+    </div>
+
+    <div *ngSwitchCase="'loading'">
+        Inner content 1
+    </div>
+
+    <div *ngSwitchCase="'loaded'">
+
+        <form #toDoForm="ngForm" (submit)="editTodoByForm(toDoForm)">
+
+            <div>
+                <label>Text:</label>
+                <input type="text" name="text" #refText="ngModel" [ngModel]="toDoDetail.text" required>
+            </div>
+
+            <div>
+                <label>Due Date:</label>
+                <input type="date" name="dueDate" #refDueDate="ngModel" [ngModel]="toDoDetail.dueDate">
+            </div>
+
+            <div>
+                <label>State:</label>
+                <select name="state" #refState="ngModel" [ngModel]="toDoDetail.state">
+                    <option value="TODO">TODO</option>
+                    <option value="IN_PROGRESS">IN_PROGRESS</option>
+                    <option value="DONE">DONE</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="SAVE">
+            </div>
+
+        </form>
+
+    </div>
+
+    <div *ngSwitchCase="'error'">
+        Inner content 3
+    </div>
+    <div *ngSwitchCase="'empity'">
+        Inner content 4
+    </div>
+</ng-container>
