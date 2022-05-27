@@ -25,6 +25,11 @@ export class ToDoService {
     return this.http.get<ThingToDo>(url);
   }
 
+  public getListToDoByWord(word: String): Observable<ThingToDo[]> {
+    const url = environment.baseUrl + '/toDo/searchWord/' + word;
+    return this.http.get<ThingToDo[]>(url);
+  }
+
   public editToDo(toDo: ThingToDo): Observable<ThingToDo> {
 
     const url = environment.baseUrl + '/toDo/' + toDo.id;

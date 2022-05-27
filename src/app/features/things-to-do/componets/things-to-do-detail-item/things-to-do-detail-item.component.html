@@ -1,17 +1,18 @@
 <ng-container [ngSwitch]="loading">
     <todo-back-home></todo-back-home>
     <div *ngSwitchCase="'loading'">
-        Inner content 1
+        IN CARICAMENTO
     </div>
     <div *ngSwitchCase="'loaded'">
         {{toDoDetail.text}}
+        {{toDoDetail.creationDate}}
         {{toDoDetail.dueDate}}
         {{toDoDetail.state}}
     </div>
     <div *ngSwitchCase="'error'">
-        Inner content 3
+        Errore ricarica la pagina
     </div>
     <div *ngSwitchCase="'empity'">
-        Inner content 4
+        Nessun valore trovato
     </div>
 </ng-container>

@@ -1,9 +1,24 @@
 <div>
     <a [routerLink]="['/todo/create']" routerLinkActive="active">Create New Task</a>
 </div>
+
+<div>
+    <form #searchByWordForm="ngForm" (submit)="searchByWord(searchByWordForm)">
+
+        <div>
+            <label>KeyWord:</label>
+            <input type="text" name="word" #refWord="ngModel" [ngModel]="word">
+        </div>
+
+        <div>
+            <input type="submit" value="SEARCH">
+        </div>
+    </form>
+</div>
+
 <ng-container [ngSwitch]="loading">
     <div *ngSwitchCase="'loading'">
-        Inner content 1
+        IN CARICAMENTO
     </div>
     <div *ngSwitchCase="'loaded'">
         <todo-things-to-do-list-item *ngFor="let toDo of toDoList" [toDoItem]="toDo"
@@ -13,9 +28,9 @@
         </todo-things-to-do-list-item>
     </div>
     <div *ngSwitchCase="'error'">
-        Inner content 3
+        Errore ricarica la pagina
     </div>
     <div *ngSwitchCase="'empity'">
-        Inner content 4
+        Nessun valore trovato
     </div>
 </ng-container>
